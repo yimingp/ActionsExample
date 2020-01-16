@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Configure_CMake
-        shell: bash
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_Workspace -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+      # - name: Configure_CMake
+      #   shell: bash
+      #   working-directory: ${{runner.workspace}}/build
+      #   run: cmake $GITHUB_Workspace -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
-      - name: Create Build Environment
-        run: cmake -E make_dir ${{runner.workspace}}/build
+      # - name: Create Build Environment
+      #   run: cmake -E make_dir ${{runner.workspace}}/build
 
       - name: Build
         working-directory: ${{runner.workspace}}/build
