@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Output GCC Version
+        run: g++ --version
+
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
