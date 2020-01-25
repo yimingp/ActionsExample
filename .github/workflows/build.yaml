@@ -18,9 +18,6 @@ jobs:
       - name: CMake Version
         run: cmake --version
 
-      - name: Build Type
-        run: echo $BUILD_TYPE
-
       - name: Executable name
         run: echo $EXE_NAME
 
@@ -43,16 +40,27 @@ jobs:
         # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
         run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
+      - name: Build Type env var output
+        run: echo $BUILD_TYPE
+
       - name: Build
         working-directory: ${{runner.workspace}}/build
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: cmake --build . --config $BUILD_TYPE
 
+      - name: List contents of build director
+        run: ls -al ${{runner.workspace}}/build
+
       - name: run
         working-directory: ${{runner.workspace}}/build
+        shell: bash
         #run: ./${{github.event.repository.name}}
         run: $EXE_NAME
         
-
+      - name: run2
+        working-directory: ${{runner.workspace}}/build
+        shell: bash
+        run: ./${{github.event.repository.name}}
+        #run: $EXE_NAME
       
