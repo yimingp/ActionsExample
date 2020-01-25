@@ -13,22 +13,27 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Output GCC Version
-        run: g++ --version
+          run: |
+            g++ --version
+            cmake --version
 
-      - name: CMake Version
-        run: cmake --version
-
-      - name: Executable name
-        run: echo $EXE_NAME
+      - name: Executable name Environment Variable Check
+          run: |
+            echo $EXE_NAME
+            echo " "
+            echo ${{runner.workspace}}
+            echo " "
+            echo $GITHUB_WORKSPACE
+            echo " "
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
-      - name: Create Another Directory
-        run: cmake -E make_directory ${{runner.workspace}}/markstest
-
-      - name: Test create directory
-        run: ls -al ${{runner.workspace}}
+#      - name: Create Another Directory
+#        run: cmake -E make_directory ${{runner.workspace}}/markstest
+#
+#      - name: Test create directory
+#        run: ls -al ${{runner.workspace}}
 
       - name: Configure CMake
         # Use a bash shell so we can use the same syntax for environment variable
@@ -55,12 +60,7 @@ jobs:
       - name: run
         working-directory: ${{runner.workspace}}/build
         shell: bash
-        #run: ./${{github.event.repository.name}}
         run: ./$EXE_NAME
         
-      - name: run2
-        working-directory: ${{runner.workspace}}/build
-        shell: bash
-        run: ./${{github.event.repository.name}}
-        #run: $EXE_NAME
+
       
