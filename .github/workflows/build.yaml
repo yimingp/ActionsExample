@@ -1,8 +1,9 @@
 name: HelloWorld Test
 
 on: [push]
+
 env:
-  EXE_NAME: run_me
+  EXE_NAME: sampleActionsOutput
 
 jobs:
   build:
@@ -18,9 +19,10 @@ jobs:
         run: cmake --version
 
       - name: Build Type
-        run: |
-          echo $BUILD_TYPE
-          echo $EXE_NAME
+        run: echo $BUILD_TYPE
+
+      - name: Executable name
+        run: echo $EXE_NAME
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
@@ -49,7 +51,8 @@ jobs:
 
       - name: run
         working-directory: ${{runner.workspace}}/build
-        run: ./${{github.event.repository.name}}
+        #run: ./${{github.event.repository.name}}
+        run: $EXE_NAME
         
 
       
