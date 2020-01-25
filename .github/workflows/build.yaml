@@ -12,8 +12,10 @@ jobs:
       - name: Output GCC Version
         run: g++ --version
 
-      - name: CMake Version and Build Type
+      - name: CMake Version
         run: cmake --version
+
+      - name: Build Type
         run: echo $BUILD_TYPE
 
       - name: Create Build Environment
