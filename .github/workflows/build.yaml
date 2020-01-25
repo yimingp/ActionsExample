@@ -12,8 +12,9 @@ jobs:
       - name: Output GCC Version
         run: g++ --version
 
-      - name: CMake Version
+      - name: CMake Version and Build Type
         run: cmake --version
+        run: echo $BUILD_TYPE
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build

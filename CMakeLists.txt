@@ -7,4 +7,4 @@ project(ActionsExample)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(ActionsExample main.cpp)
+add_executable($ENV{EXE_NAME} main.cpp)
