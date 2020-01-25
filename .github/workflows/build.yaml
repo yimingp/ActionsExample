@@ -18,6 +18,12 @@ jobs:
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
+      - name: Create Another Directory
+        run: cmake -E make_directory ${{runner.workspace}}/markstest
+
+      - name: Test create directory
+        run: ls -al ${{runner.workspace}}
+
       - name: Configure CMake
         # Use a bash shell so we can use the same syntax for environment variable
         # access regardless of the host operating system
