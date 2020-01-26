@@ -4,6 +4,7 @@ on: [push]
 
 env:
   EXE_NAME: sampleActionsOutput
+  CMD_ARGS: input01.txt
 
 jobs:
   build:
@@ -13,11 +14,6 @@ jobs:
 
       - name: Checkout project repo from GitHub
         uses: actions/checkout@v1
-
-#      - name: Output GCC Version
-#        run: |
-#          g++ --version
-#          cmake --version
 
       - name: Executable name Environment Variable Check
         run: |
@@ -55,7 +51,7 @@ jobs:
       - name: run
         working-directory: ${{runner.workspace}}/build
         shell: bash
-        run: ./$EXE_NAME
+        run: ./$EXE_NAME $CMD_ARGS
         
       - name: Upload output files to GitHub so they can be reviewed
         uses: actions/upload-artifact@v1
