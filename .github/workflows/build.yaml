@@ -62,5 +62,7 @@ jobs:
         shell: bash
         run: ./$EXE_NAME
         
-
+      - uses: actions/download-artifact@v1
+        with:
+          name: myfile.txt
       
