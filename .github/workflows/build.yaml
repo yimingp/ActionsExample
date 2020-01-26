@@ -62,7 +62,9 @@ jobs:
         shell: bash
         run: ./$EXE_NAME
         
-      - uses: actions/download-artifact@v1
+      - name: Upload output files
+        uses: actions/upload-artifact@v1
         with:
           name: myfile.txt
+          path: ${{runner.workspace}}/build
       
