@@ -15,6 +15,7 @@ cmake_minimum_required(VERSION 3.10)
 
 # set an environment variable EXE_NAME
 set(ENV{EXE_NAME} sampleActionsOutput)
+set(ENV{TEST_EXE} testerTester)
 
 # Copy data files to build dir
 foreach(file IN LISTS file01 file02 file03)

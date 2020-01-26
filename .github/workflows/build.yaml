@@ -19,6 +19,8 @@ jobs:
         run: |
           echo $EXE_NAME
           echo " "
+          echo $TEST_EXE
+          echo " "
           echo ${{runner.workspace}}
           echo " "
           echo $GITHUB_WORKSPACE
