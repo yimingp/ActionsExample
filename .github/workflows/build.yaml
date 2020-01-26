@@ -5,12 +5,15 @@ on: [push]
 env:
   EXE_NAME: sampleActionsOutput
 
+
 jobs:
   build:
     name: Project_Building
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+
+      - name: Checkout project repo from GitHub
+        uses: actions/checkout@v1
 
       - name: Output GCC Version
         run: |
@@ -66,5 +69,5 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: project_output
-          path: ${{runner.workspace}}/build/*.txt
+          path: ${{runner.workspace}}/build
       
