@@ -4,7 +4,8 @@ on: [push]
 
 env:
   EXE_NAME: sampleActionsOutput
-  CMD_ARGS: input01.txt
+  INPUT_FILES: input01.txt input02.txt
+  OUTPUT_FILES: output01.txt output02.txt
 
 jobs:
   build:
@@ -54,11 +55,21 @@ jobs:
       - name: run
         working-directory: ${{runner.workspace}}/build
         shell: bash
-        run: ./$EXE_NAME $CMD_ARGS
+        run: ./$EXE_NAME $INPUT_FILES $OUTPUT_FILES
+
+      - name: Copy output files to artifact directory
+        working-directory: ${{runner.workspace}}/build
+        run: |
+          mkdir artifacts
+          for f in $OUTPUT_FILES
+          do
+            echo "  Copying $f"
+            cp $f artifacts/
+          done
         
       - name: Upload output files to GitHub so they can be reviewed
         uses: actions/upload-artifact@v1
         with:
           name: project_output
-          path: ${{runner.workspace}}/build
+          path: ${{runner.workspace}}/build/artifacts
       

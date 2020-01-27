@@ -27,13 +27,16 @@ int main(int argc, char **argv) {
     }
     fin.close();
 
-    ofstream fout("myfile.txt");
+    ofstream fout(argv[3]);
+    ofstream fout2(argv[4]);
     if (!fout) {
         return -1;
     }
 
     fout << "Hello world from a file!" << endl;
+    fout2 << "some other text in this output file" << endl;
     fout.close();
+    fout2.close();
 
     return 0;
 }
