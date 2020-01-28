@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    fout << "Hello world from a file!" << endl;
+    fout << "Goodbye from a file!" << endl;
     fout2 << "some other text in this output file" << endl;
     fout.close();
     fout2.close();
